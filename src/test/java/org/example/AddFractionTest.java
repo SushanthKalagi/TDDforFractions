@@ -13,10 +13,23 @@ public class AddFractionTest {
         assertEquals(0,sum.intValue());
     }
     @Test
-
     public void nonZeroPlusZero() throws Exception{
         final Fraction sum = new Fraction(3).plus(new Fraction(0));
 
         assertEquals(3, sum.intValue());
+    }
+
+    @Test
+    public void nonNegativeNonZeroOperands() throws Exception {
+        final Fraction sum = new Fraction(3).plus(new Fraction(1));
+
+        assertEquals(4, sum.intValue());
+    }
+
+    @Test
+    public void negativeInputsAndNegativeOutputs() throws Exception{
+        final Fraction sum = new Fraction(-3).plus(new Fraction(1));
+
+        assertEquals(-2,sum.intValue());
     }
 }

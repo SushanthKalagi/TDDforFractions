@@ -7,7 +7,9 @@ public class Fraction {
     }
 
     public Fraction plus(Fraction fract) {
-        return this;
+
+
+        return new Fraction(this.integerValue + fract.integerValue);
     }
 
     public int intValue() {
