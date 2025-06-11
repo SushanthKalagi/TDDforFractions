@@ -1,18 +1,37 @@
 package org.example;
 
 public class Fraction {
-    public final int integerValue;
+    //public int integerValue;
+    public final int numerator;
+    public int denominator;
     public Fraction(int integerValue) {
-        this.integerValue = integerValue;
+        this.numerator = integerValue;
+        this.denominator =1;
+    }
+
+    public Fraction(int numerator, int denominator){
+       // this.numerator = numerator;
+        //this.denominator = denominator;
+
+        this.numerator = numerator;
+        this.denominator = denominator;
     }
 
     public Fraction plus(Fraction fract) {
 
 
-        return new Fraction(this.integerValue + fract.integerValue);
+        return new Fraction(this.numerator + fract.numerator, denominator);
     }
 
+    public int getNumerator(){
+        return numerator;
+
+    }
+
+    public int getDenominator(){
+        return denominator;
+    }
     public int intValue() {
-        return integerValue;
+        return numerator;
     }
 }
