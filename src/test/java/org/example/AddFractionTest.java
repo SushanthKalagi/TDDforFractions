@@ -40,4 +40,12 @@ public class AddFractionTest {
         assertEquals(3,sum.getNumerator());
         assertEquals(5,sum.getDenominator());
     }
+
+    @Test
+    public void nonTrivialAndNonCommonDenominator() throws Exception{
+        final Fraction sum = new Fraction(1,2).plus(new Fraction(1,3));
+
+        assertEquals(5,sum.getNumerator());
+        assertEquals(6,sum.getDenominator());
+    }
 }

@@ -20,7 +20,11 @@ public class Fraction {
 
     public Fraction plus(Fraction fract) {
 
-
+        if(this.denominator != fract.denominator) {
+            int newNumerator = this.numerator * fract.denominator + fract.numerator * this.denominator;
+            int newDenominator = this.denominator * fract.denominator;
+            return new Fraction(newNumerator, newDenominator);
+        }
         return new Fraction(this.numerator + fract.numerator, denominator);
     }
 
