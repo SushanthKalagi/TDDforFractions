@@ -3,7 +3,7 @@ package org.example;
 public class Fraction {
     //public int integerValue;
     public final int numerator;
-    public int denominator;
+    public final int denominator;
 
     public Fraction(int integerValue) {
         this.numerator = integerValue;
@@ -14,18 +14,34 @@ public class Fraction {
         // this.numerator = numerator;
         //this.denominator = denominator;
 
-        this.numerator = numerator;
-        this.denominator = denominator;
+
+        if (denominator < 0) {
+            numerator = -1 * numerator;
+           denominator = Math.abs(denominator);
+        }
+        int gcd = gcd(Math.abs(numerator), Math.abs(denominator));
+        this.numerator = numerator / gcd;
+        this.denominator = denominator / gcd;
     }
+
 
     public Fraction plus(Fraction fract) {
 
-        if(this.denominator != fract.denominator) {
-            int newNumerator = this.numerator * fract.denominator + fract.numerator * this.denominator;
-            int newDenominator = this.denominator * fract.denominator;
-            return new Fraction(newNumerator, newDenominator);
+
+        int newNumerator = this.numerator * fract.denominator + fract.numerator * this.denominator;
+        int newDenominator = this.denominator * fract.denominator;
+        return new Fraction(newNumerator, newDenominator);
+
+
+    }
+
+    public int gcd(int a, int b) {
+        while (b != 0) {
+            int t = b;
+            b = a % b;
+            a = t;
         }
-        return new Fraction(this.numerator + fract.numerator, denominator);
+        return a;
     }
 
     public int getNumerator() {
@@ -38,8 +54,9 @@ public class Fraction {
     }
 
     public int intValue() {
-        return numerator;
+        return numerator / denominator;
     }
+
 
     @Override
     public boolean equals(Object other) {
@@ -51,8 +68,9 @@ public class Fraction {
         return false;
 
     }
+
     @Override
-    public String toString(){
-        return String.format("%d/%d", numerator,denominator);
+    public String toString() {
+        return String.format("%d/%d", numerator, denominator);
     }
 }
